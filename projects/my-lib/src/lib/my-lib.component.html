@@ -1,0 +1,73 @@
+<div class="wrap-table">
+  <table class="table">
+    <thead>
+      <th
+        *ngFor="let item of tableHeader"
+        [class.cursor_sort]="item.isSort"
+        (click)="changeSortValue(item)"
+      >
+        <span>
+          {{ item.title }}
+          <ng-container *ngIf="item.isSort">
+            <img
+              *ngIf="!item.sortValue"
+              src="assets/img/icon-svg/sort-default.svg"
+              alt=""
+              class="icon-sort"
+            />
+            <img
+              *ngIf="item.sortValue === 'desc'"
+              src="assets/img/icon-svg/sort-down.svg"
+              alt=""
+              class="icon-sort"
+              style="top: 42%"
+            />
+            <img
+              *ngIf="item.sortValue === 'asc'"
+              src="assets/img/icon-svg/sort-up.svg"
+              alt=""
+              class="icon-sort"
+              style="top: 36%"
+            />
+          </ng-container>
+        </span>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td *ngFor="let content of item.content">
+          <p>{{ content.title || "---" }}</p>
+        </td>
+        <td *ngIf="!item.noAction" class="position-relative">
+          <div class="wrap-btn">
+            <button
+              *ngIf="item.canView"
+              class="btn"
+              (click)="handleAction(taskAction.VIEW, item.itemOrigin)"
+            >
+              <img src="assets/img/icon-svg/icon-view.svg" alt="" />
+            </button>
+            <button
+              *ngIf="item.canEdit"
+              class="btn"
+              (click)="handleAction(taskAction.UPDATE, item.itemOrigin)"
+            >
+              <img src="assets/img/icon-svg/icon-edit.svg" alt="" />
+            </button>
+            <button
+              *ngIf="item.canDelete"
+              class="btn"
+              (click)="handleAction(taskAction.DELETE, item.itemOrigin)"
+            >
+              <img src="assets/img/icon-svg/icon-delete.svg" alt="" />
+            </button>
+          </div>
+        </td>
+      </tr>
+      <ng-content select=".count-sum"></ng-content>
+    </tbody>
+  </table>
+</div>
+<h5 *ngIf="items.length === 0" class="text-center no-data">
+  Không có dữ liệu!
+</h5>

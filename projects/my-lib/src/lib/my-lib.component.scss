@@ -1,0 +1,125 @@
+.wrap-table {
+  max-height: calc(100vh - 260px);
+  overflow: auto;
+  .table {
+    width: 100%;
+    min-width: 1100px;
+    margin-bottom: 0;
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    th {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      text-transform: uppercase;
+      color: #4d5d7d;
+      padding: 10px 20px 10px 10px;
+      background: #f1f5fa;
+      &:first-child,
+      &:last-child {
+        text-align: center;
+        padding-right: 10px;
+      }
+      span {
+        padding: 0;
+        position: relative;
+        .icon-sort {
+          padding: 0 0 0 5px;
+          position: absolute;
+          top: 50%;
+          left: 100%;
+          transform: translateY(-50%);
+        }
+      }
+      &.cursor_sort {
+        cursor: pointer;
+      }
+    }
+    td {
+      font-size: 14px;
+      color: #4d5d7d;
+      padding: 10px 20px 10px 10px;
+      border-bottom: 1px solid #f1f5fa;
+      &:first-child,
+      &:last-child {
+        text-align: center;
+        padding-right: 10px;
+      }
+      p {
+        margin-bottom: 0;
+      }
+      a {
+        color: #3882fe;
+      }
+      .status {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .name {
+          font-size: 14px;
+          line-height: 19px;
+          padding: 0 12px;
+          border-radius: 10px;
+          &.new {
+            color: #59c36a !important;
+            background: #dbffd9;
+          }
+          &.edit {
+            color: #f1bf32 !important;
+            background: #fff7cb;
+          }
+          &.cancel {
+            color: #ef0d10 !important;
+            background: #ffd6d6;
+          }
+        }
+        .count {
+          font-size: 10px;
+          color: #f13232;
+        }
+      }
+      .btn {
+        padding: 0 5px;
+      }
+      .btn-unlock {
+        position: absolute;
+        left: -28px;
+      }
+      .wrap-btn {
+        display: inline-block;
+        position: relative;
+      }
+    }
+  }
+}
+
+.no-data {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 40px;
+  text-transform: uppercase;
+  color: #4d5d7d;
+  margin-top: 20px;
+}
+
+::ng-deep {
+  .count-sum {
+    background: #f1f5fa;
+    position: sticky;
+    bottom: 0;
+    td {
+      font-weight: 700;
+      color: #4d5d7d;
+      text-align: right !important;
+      border-bottom: none;
+      padding-right: 20px;
+      span {
+        font-weight: 400;
+      }
+    }
+  }
+}
